@@ -11,7 +11,7 @@ public class hyperateSocket : MonoBehaviour
 {
 	// Put your websocket Token ID here
     public string websocketToken2 = "iXiyxevGDyhWff3YnvEfpcCdKMJvArtSYyUkrXF6Siq1qhBrSkB9zsYVjGWhFPh3"; //You don't have one, get it here https://www.hyperate.io/api
-    public string hyperateID = "internal-testing";
+    public string hyperateID2 = "C21C";
 	// Textbox to display your heart rate in
     Text textBox;
 	// Websocket for connection with Hyperate
@@ -45,6 +45,9 @@ public class hyperateSocket : MonoBehaviour
             var message = System.Text.Encoding.UTF8.GetString(bytes);
             var msg = JObject.Parse(message);
 
+            // var a = {};
+
+            // Debug.Log(msg["payload"]["hr"]);
             Debug.Log(message);
 
             if (msg["event"].ToString() == "hr_update")
@@ -73,7 +76,7 @@ public class hyperateSocket : MonoBehaviour
         if (websocket.State == WebSocketState.Open)
         {
             // Log into the "internal-testing" channel
-            await websocket.SendText("{\"topic\": \"hr:"+hyperateID+"\", \"event\": \"phx_join\", \"payload\": {}, \"ref\": 0}");
+            await websocket.SendText("{\"topic\": \"hr:"+hyperateID2+"\", \"event\": \"phx_join\", \"payload\": {}, \"ref\": 0}");
         }
     }
     async void SendHeartbeat()
